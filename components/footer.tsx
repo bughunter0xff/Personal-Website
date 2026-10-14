@@ -1,6 +1,7 @@
 import { ShieldCheck } from "lucide-react";
 import { footer, site } from "@/content";
 import { LocalTime } from "@/components/ui/local-time";
+import { withBase } from "@/lib/base-path";
 
 export function Footer() {
   return (
@@ -22,7 +23,7 @@ export function Footer() {
               <p className="label-mono text-fg-muted">Responsible disclosure</p>
               <p className="mt-2 text-pretty text-sm leading-relaxed text-fg-muted">{footer.disclosure}</p>
               <a
-                href={footer.securityTxtPath}
+                href={withBase(footer.securityTxtPath)}
                 className="mt-3 inline-block font-mono text-xs text-fg underline decoration-line-strong underline-offset-4 hover:decoration-accent"
               >
                 {footer.securityTxtPath}

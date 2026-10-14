@@ -39,7 +39,26 @@ Search the repo for `TODO` to find every placeholder:
 Writeups with `href: undefined` render as "Soon" and are disabled in the command palette, so nothing
 links to a dead page while a draft is in progress.
 
-## Deploy to Vercel
+## Deploy to GitHub Pages (current setup)
+
+Every push to `main` runs `.github/workflows/deploy.yml`, which builds a static export with the
+repository's base path and publishes it to GitHub Pages. The site lives at
+**https://bughunter0xff.github.io/Personal-Website/**. Nothing else to configure: the workflow
+enables Pages on first run. If that first run fails on the "Enable GitHub Pages" step, open
+**Settings → Pages** and set **Source** to **GitHub Actions**, then re-run the workflow.
+
+Two things are specific to Pages:
+
+- Pages cannot send HTTP headers, so the Content Security Policy and referrer policy are emitted as
+  `<meta>` tags instead (`GITHUB_PAGES=true` in the build). `*.github.io` is on the browser HSTS
+  preload list, so transport security is covered. Frame-ancestors and the other header-only
+  policies apply only on Vercel.
+- The base path (`/Personal-Website`) is derived from the repository name. Rename the repository to
+  `bughunter0xff.github.io` and the site moves to the root automatically. For a custom domain, add
+  a `CNAME` file to `public/` and set the domain under **Settings → Pages**; the workflow then
+  builds for the root path too (update `site.url` in `content.ts` as well).
+
+## Deploy to Vercel (alternative)
 
 1. Push the repository to GitHub.
 2. In Vercel, **Add New → Project**, import the repo. The Next.js preset is detected automatically;
@@ -49,10 +68,9 @@ links to a dead page while a draft is in progress.
    `content.ts`, for canonical links, Open Graph, the sitemap and robots.txt.
 4. Add your domain under **Settings → Domains**.
 
-Every route is prerendered at build time (`○ (Static)` in the build output). The security headers in
-`next.config.ts` are applied by Vercel at the edge. If you ever host on a static file server instead,
-set `output: "export"` and move the headers to the host's config (Netlify `_headers`, Cloudflare,
-nginx…), because `headers()` does not run without a server.
+Every route is prerendered at build time (`○ (Static)` in the build output). On Vercel the full set
+of security headers in `next.config.ts` is applied at the edge, which is stricter than what Pages
+can offer, so Vercel is the better home once you have a custom domain.
 
 ## Design decisions
 

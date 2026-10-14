@@ -5,6 +5,7 @@ import { SpotlightCard } from "@/components/motion/spotlight-card";
 import { ButtonLink } from "@/components/ui/button";
 import { CopyButton } from "@/components/ui/copy-button";
 import { SectionHeading } from "@/components/ui/section-heading";
+import { withBase } from "@/lib/base-path";
 
 export function Contact() {
   const section = sections.find((s) => s.id === "contact")!;
@@ -75,7 +76,7 @@ export function Contact() {
                   {contact.pgp.fingerprint}
                 </pre>
                 <a
-                  href={contact.pgp.keyUrl}
+                  href={withBase(contact.pgp.keyUrl)}
                   className="mt-4 inline-flex items-center gap-1.5 text-sm text-fg-muted underline decoration-line-strong underline-offset-4 transition-colors hover:text-fg hover:decoration-accent"
                 >
                   Download public key

@@ -9,9 +9,11 @@ import { Footer } from "@/components/footer";
 import { Cursor } from "@/components/cursor";
 import { SectionRail } from "@/components/section-rail";
 import { cn } from "@/lib/utils";
+import { buildCsp } from "@/lib/csp";
 import "./globals.css";
 
 const siteUrl = getSiteUrl();
+const isGitHubPages = process.env.GITHUB_PAGES === "true";
 const title = `${site.name} — ${site.role}`;
 
 export const metadata: Metadata = {
@@ -64,6 +66,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       className={cn(fontSans.variable, fontMono.variable, "dark")}
       suppressHydrationWarning
     >
+      {isGitHubPages ? (
+        // GitHub Pages cannot send response headers; see next.config.ts.
+        <head>
+          <meta httpEquiv="Content-Security-Policy" content={buildCsp({ meta: true })} />
+          <meta name="referrer" content="strict-origin-when-cross-origin" />
+        </head>
+      ) : null}
       <body className="min-h-dvh antialiased">
         <a
           href="#main"
