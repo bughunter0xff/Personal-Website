@@ -1,0 +1,9 @@
+# security.txt for Dipesh Thakur (bughunter0xff) — RFC 9116
+# TODO: replace the contact address, key URL, canonical URL and expiry date.
+
+Contact: mailto:hello@dipeshthakur.com
+Encryption: https://dipeshthakur.com/pgp.asc
+Preferred-Languages: en
+Canonical: https://dipeshthakur.com/.well-known/security.txt
+Policy: https://dipeshthakur.com/#contact
+Expires: 2027-10-14T00:00:00.000Z

@@ -1,0 +1,36 @@
+{
+  "name": "dipesh-thakur-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Personal portfolio of Dipesh Thakur (bughunter0xff), independent security researcher.",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "cmdk": "^1.1.1",
+    "framer-motion": "^14.2.0",
+    "geist": "^1.7.2",
+    "lucide-react": "^1.56.0",
+    "next": "^16.4.0",
+    "next-themes": "^0.4.6",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.3",
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "eslint": "^9.0.0",
+    "eslint-config-next": "^16.4.0",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^5.9.0"
+  },
+  "engines": {
+    "node": ">=20.9.0"
+  }
+}
