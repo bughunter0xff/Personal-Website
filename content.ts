@@ -170,7 +170,7 @@ export const cves: Cve[] = [
     vendor: "Northern.tech",
     product: "CFEngine",
     title: "Privilege escalation",
-    severity: "Medium",
+    severity: "Critical",
     // TODO: confirm the public advisory date.
     date: "2026-02-10",
     creditedVia: "HackerOne",
