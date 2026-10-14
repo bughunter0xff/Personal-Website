@@ -1,6 +1,9 @@
 import type { MetadataRoute } from "next";
 import { site } from "@/content";
 
+// Allow `output: "export"` builds; the route is static either way.
+export const dynamic = "force-static";
+
 export default function manifest(): MetadataRoute.Manifest {
   return {
     name: `${site.name} — ${site.role}`,
