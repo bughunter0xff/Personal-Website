@@ -1,0 +1,33 @@
+2:"$Sreact.fragment"
+3:"/Personal-Website/_next/static/chunks/42onvq6nokjl2.js"
+4:I[39756,["$3"],"default"]
+5:I[37457,["$3"],"default"]
+a:"/Personal-Website/_next/static/chunks/43emtpms29lo9.js"
+b:"/Personal-Website/_next/static/chunks/0gq1pxfu9rl6n.js"
+c:"/Personal-Website/_next/static/chunks/32e0n_ncvoulp.js"
+d:"/Personal-Website/_next/static/chunks/3-6qaa26ioq0a.js"
+e:"/Personal-Website/_next/static/chunks/2nb8s235mhlm2.js"
+f:I[47345,["$a","$b","$c","$d","$e"],"Magnetic"]
+10:I[22016,["$a","$b","$c","$d","$e"],""]
+11:I[5014,["$a","$b","$c","$d","$e"],"default"]
+12:I[97367,["$3"],"OutletBoundary"]
+13:"$Sreact.suspense"
+16:"ViewportBoundary"
+17:I[97367,["$3"],"$16"]
+18:"MetadataBoundary"
+19:I[97367,["$3"],"$18"]
+1a:I[27201,["$3"],"IconMark"]
+7:X
+7:C
+8:X
+9:[["children",{"s":"__PAGE__","h":160,"d":{"r":["$","$2","c",{"children":[["$","section",null,{"className":"container-x flex min-h-[100svh] flex-col justify-center py-32","children":[["$","p",null,{"className":"label-mono text-accent","children":"404"}],["$","h1",null,{"className":"display mt-6 text-6xl md:text-8xl","children":"Nothing here."}],["$","p",null,{"className":"mt-6 max-w-md text-fg-muted","children":"The page you asked for doesn't exist. If you followed a link from somewhere, it may have moved."}],["$","div",null,{"className":"mt-10","children":["$","$Lf",null,{"strength":0.25,"children":["$","$L10",null,{"className":"group inline-flex items-center gap-2 rounded-full px-5 py-3 text-sm font-medium tracking-tight transition-[background-color,color,border-color,transform] duration-300 ease-[var(--ease-out-expo)] active:scale-[0.98] border border-line-strong text-fg hover:border-fg hover:bg-fg hover:text-bg","href":"/","children":[["$","span",null,{"children":"Back to the start"}],["$","$L11",null,{"icon":{"name":"arrow-up-right","size":24,"node":[["path",{"d":"M7 7h10v10","key":"1tivn9"}],["path",{"d":"M7 17 17 7","key":"1vkiza"}]]},"className":"size-4 transition-transform duration-300 ease-[var(--ease-out-expo)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5","aria-hidden":true}]]}]}]}]]}],[["$","script","script-0",{"src":"/Personal-Website/_next/static/chunks/2nb8s235mhlm2.js","async":true}]],["$","$L12",null,{"children":["$","$13",null,{"name":"Next.MetadataOutlet","children":"$@14"}]}]]}],"p":"$@15","v":null,"s":"$8"}}]]
+1:[["children",{"s":"/_not-found","h":64,"d":{"r":["$","$2","c",{"children":[null,["$","$L4",null,{"parallelRouterKey":"children","template":["$","$L5",null,{}]}]]}],"p":"$@6","v":"$7","s":"$8"},"c":"$Q9"}]]
+0:{"t":{"t":{"s":"","h":16,"c":"$Q1"},"h":{"r":["$","$2","h",{"children":[["$","meta",null,{"name":"robots","content":"noindex"}],["$","$L17",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","2",{"name":"theme-color","content":"#0a0a0b","media":"(prefers-color-scheme: dark)"}],["$","meta","3",{"name":"theme-color","content":"#f4f2ec","media":"(prefers-color-scheme: light)"}],["$","meta","4",{"name":"color-scheme","content":"dark light"}]]}],["$","$L19",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$13",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Not found — Dipesh Thakur"}],["$","meta","1",{"name":"description","content":"Dipesh Thakur (bughunter0xff) is an independent security researcher focused on command and argument injection in developer infrastructure. CVEs, acknowledgements, research writeups and responsible disclosure."}],["$","link","2",{"rel":"author","href":"https://bughunter0xff.github.io/Personal-Website"}],["$","meta","3",{"name":"author","content":"Dipesh Thakur"}],["$","link","4",{"rel":"manifest","href":"/Personal-Website/manifest.webmanifest"}],["$","meta","5",{"name":"keywords","content":"security researcher,bug bounty,command injection,argument injection,developer infrastructure,source code auditing,CVE,HackerOne,Bugcrowd"}],["$","meta","6",{"name":"creator","content":"Dipesh Thakur"}],["$","meta","7",{"name":"robots","content":"noindex"}],["$","meta","8",{"name":"category","content":"technology"}],["$","link","9",{"rel":"canonical","href":"https://bughunter0xff.github.io/Personal-Website/"}],["$","meta","10",{"property":"og:title","content":"Dipesh Thakur — Independent Security Researcher"}],["$","meta","11",{"property":"og:description","content":"Dipesh Thakur (bughunter0xff) is an independent security researcher focused on command and argument injection in developer infrastructure. CVEs, acknowledgements, research writeups and responsible disclosure."}],["$","meta","12",{"property":"og:url","content":"https://bughunter0xff.github.io/Personal-Website"}],["$","meta","13",{"property":"og:site_name","content":"Dipesh Thakur"}],["$","meta","14",{"property":"og:locale","content":"en_GB"}],["$","meta","15",{"property":"og:image","content":"https://bughunter0xff.github.io/Personal-Website/opengraph-image?77179c152d38dfd5"}],["$","meta","16",{"property":"og:image:type","content":"image/png"}],["$","meta","17",{"property":"og:image:width","content":"1200"}],["$","meta","18",{"property":"og:image:height","content":"630"}],["$","meta","19",{"property":"og:image:alt","content":"Dipesh Thakur — Independent Security Researcher"}],["$","meta","20",{"property":"og:type","content":"website"}],["$","meta","21",{"name":"twitter:card","content":"summary_large_image"}],["$","meta","22",{"name":"twitter:creator","content":"@bughunter0xff"}],["$","meta","23",{"name":"twitter:title","content":"Dipesh Thakur — Independent Security Researcher"}],["$","meta","24",{"name":"twitter:description","content":"Dipesh Thakur (bughunter0xff) is an independent security researcher focused on command and argument injection in developer infrastructure. CVEs, acknowledgements, research writeups and responsible disclosure."}],["$","meta","25",{"name":"twitter:image","content":"https://bughunter0xff.github.io/Personal-Website/opengraph-image?77179c152d38dfd5"}],["$","meta","26",{"name":"twitter:image:alt","content":"Dipesh Thakur — Independent Security Researcher"}],["$","meta","27",{"name":"twitter:image:type","content":"image/png"}],["$","meta","28",{"name":"twitter:image:width","content":"1200"}],["$","meta","29",{"name":"twitter:image:height","content":"630"}],["$","link","30",{"rel":"icon","href":"/Personal-Website/icon.svg?icon.1tn1na7exgo9u.svg","sizes":"any","type":"image/svg+xml"}],["$","$L1a","31",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@1b","v":null,"s":"$8"}},"a":"$@1c","u":"$@1d","b":"FNjBtOGvJ9NRbMxmA58zU"}
+14:null
+1d:true
+8:300
+8:C
+1c:0
+6:"$undefined"
+1b:"$undefined"
+15:"$undefined"
