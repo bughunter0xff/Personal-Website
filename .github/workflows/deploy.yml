@@ -6,16 +6,14 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write
 
 concurrency:
   group: pages
   cancel-in-progress: true
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -24,11 +22,6 @@ jobs:
         with:
           node-version: 22
           cache: npm
-
-      - name: Enable GitHub Pages (no-op once enabled)
-        uses: actions/configure-pages@v5
-        with:
-          enablement: true
 
       - name: Work out the site URL and base path
         id: site
@@ -54,16 +47,13 @@ jobs:
           NEXT_PUBLIC_BASE_PATH: ${{ steps.site.outputs.base_path }}
           NEXT_PUBLIC_SITE_URL: ${{ steps.site.outputs.site_url }}
 
-      - uses: actions/upload-pages-artifact@v3
+      # Publishes ./out to the gh-pages branch, which GitHub Pages serves.
+      # public/.nojekyll is part of the export, so the _next directory is kept.
+      - name: Publish to gh-pages
+        uses: peaceiris/actions-gh-pages@v4
         with:
-          path: out
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - id: deployment
-        uses: actions/deploy-pages@v4
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./out
+          publish_branch: gh-pages
+          force_orphan: true
+          commit_message: "Deploy ${{ github.sha }}"

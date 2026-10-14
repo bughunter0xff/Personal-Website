@@ -42,10 +42,10 @@ links to a dead page while a draft is in progress.
 ## Deploy to GitHub Pages (current setup)
 
 Every push to `main` runs `.github/workflows/deploy.yml`, which builds a static export with the
-repository's base path and publishes it to GitHub Pages. The site lives at
-**https://bughunter0xff.github.io/Personal-Website/**. Nothing else to configure: the workflow
-enables Pages on first run. If that first run fails on the "Enable GitHub Pages" step, open
-**Settings → Pages** and set **Source** to **GitHub Actions**, then re-run the workflow.
+repository's base path and publishes it to the `gh-pages` branch, which GitHub Pages serves. The
+site lives at **https://bughunter0xff.github.io/Personal-Website/**. If the site does not appear
+after the first run, open **Settings → Pages** and set **Source** to **Deploy from a branch**,
+branch `gh-pages`, folder `/ (root)`.
 
 Two things are specific to Pages:
 
