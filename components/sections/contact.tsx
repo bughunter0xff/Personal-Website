@@ -22,7 +22,7 @@ export function Contact() {
               issue, email is best.
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-3">
-              <ButtonLink href={`mailto:${contact.email}`} external={false}>
+              <ButtonLink href={`mailto:${contact.email}`} external={false} data-cursor="Email">
                 {contact.email}
               </ButtonLink>
               <CopyButton value={contact.email} label="Copy email address" className="h-[46px] px-4" />
@@ -40,6 +40,7 @@ export function Contact() {
                         href={l.href}
                         target="_blank"
                         rel="noopener noreferrer me"
+                        data-cursor="Open"
                         className="group flex h-full flex-col justify-between gap-6 p-5"
                       >
                         <span className="flex items-start justify-between">

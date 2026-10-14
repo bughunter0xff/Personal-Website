@@ -52,6 +52,7 @@ export function Cves() {
                   href={cve.advisoryUrl}
                   target="_blank"
                   rel="noopener noreferrer"
+                  data-cursor="Advisory"
                   className="mt-6 inline-flex items-center gap-1.5 self-start text-sm font-medium text-fg underline decoration-line-strong underline-offset-4 transition-colors hover:decoration-accent"
                 >
                   Public advisory

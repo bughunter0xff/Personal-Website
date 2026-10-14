@@ -1,3 +1,7 @@
+"use client";
+
+import { m, useScroll, useSpring } from "framer-motion";
+import { useRef } from "react";
 import { sections, timeline } from "@/content";
 import { Reveal } from "@/components/motion/reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
@@ -5,6 +9,9 @@ import { cn } from "@/lib/utils";
 
 export function Background() {
   const section = sections.find((s) => s.id === "background")!;
+  const listRef = useRef<HTMLOListElement>(null);
+  const { scrollYProgress } = useScroll({ target: listRef, offset: ["start 75%", "end 60%"] });
+  const drawn = useSpring(scrollYProgress, { stiffness: 90, damping: 24, mass: 0.5 });
 
   return (
     <section id="background" aria-labelledby="background-title" className="scroll-mt-24 border-t border-line py-24 md:py-32">
@@ -19,8 +26,11 @@ export function Background() {
           </Reveal>
         </div>
 
-        <ol className="relative lg:col-span-7">
-          <span aria-hidden className="absolute left-[7px] top-2 h-[calc(100%-1rem)] w-px bg-line" />
+        <ol ref={listRef} className="relative lg:col-span-7">
+          <span aria-hidden className="absolute left-[7px] top-2 h-[calc(100%-1rem)] w-px bg-line">
+            {/* draws downward as the timeline scrolls into view */}
+            <m.span className="absolute inset-x-0 top-0 h-full origin-top bg-accent" style={{ scaleY: drawn }} />
+          </span>
           {timeline.map((item, i) => (
             <Reveal
               as="li"

@@ -94,7 +94,9 @@ export const site = {
     "Dipesh Thakur (bughunter0xff) is an independent security researcher focused on command and argument injection in developer infrastructure. CVEs, acknowledgements, research writeups and responsible disclosure.",
   // TODO: replace with your canonical production domain.
   url: "https://dipeshthakur.com",
-  location: "TODO: City, Country",
+  // TODO: set your city and IANA time zone (drives the live local-time clock).
+  location: "TODO City",
+  timeZone: "Asia/Kolkata",
   availability: "Open to collaboration and private programs",
   researchingSince: 2016,
   keywords: [

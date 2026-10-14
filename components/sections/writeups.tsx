@@ -15,7 +15,13 @@ export function Writeups() {
           {writeups.map((w, i) => {
             const inner = (
               <>
-                <div className="flex items-baseline gap-6 md:col-span-3 md:flex-col md:gap-2">
+                <div className="relative flex items-baseline gap-6 md:col-span-3 md:flex-col md:gap-2">
+                  <span
+                    aria-hidden
+                    className="display pointer-events-none absolute -top-3 right-0 hidden select-none text-7xl text-fg-faint/25 transition-colors duration-500 group-hover:text-accent/40 md:block"
+                  >
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
                   <time dateTime={w.date} className="label-mono text-fg-muted">
                     {formatDate(w.date)}
                   </time>
@@ -56,6 +62,7 @@ export function Writeups() {
                   {w.href ? (
                     <a
                       href={w.href}
+                      data-cursor="Read"
                       className={className}
                       {...(w.href.startsWith("http")
                         ? { target: "_blank", rel: "noopener noreferrer" }

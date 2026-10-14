@@ -6,6 +6,8 @@ import { Providers } from "@/components/providers";
 import { CommandPaletteProvider } from "@/components/command-palette";
 import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
+import { Cursor } from "@/components/cursor";
+import { SectionRail } from "@/components/section-rail";
 import { cn } from "@/lib/utils";
 import "./globals.css";
 
@@ -71,11 +73,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </a>
         <Providers>
           <CommandPaletteProvider>
-            <div aria-hidden className="bg-grid" />
+            <div className="relative">
+              <div aria-hidden className="bg-grid" />
+              <Nav />
+              <SectionRail />
+              <main id="main">{children}</main>
+              <Footer />
+            </div>
             <div aria-hidden className="grain" />
-            <Nav />
-            <main id="main">{children}</main>
-            <Footer />
+            <Cursor />
           </CommandPaletteProvider>
         </Providers>
       </body>

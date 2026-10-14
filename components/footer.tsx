@@ -1,5 +1,6 @@
 import { ShieldCheck } from "lucide-react";
 import { footer, site } from "@/content";
+import { LocalTime } from "@/components/ui/local-time";
 
 export function Footer() {
   return (
@@ -8,6 +9,10 @@ export function Footer() {
         <div className="md:col-span-5">
           <p className="display text-3xl">{site.name}</p>
           <p className="mt-2 font-mono text-xs text-fg-muted">@{site.handle}</p>
+          <p className="mt-6 font-mono text-xs text-fg-muted">
+            <span className="label-mono mr-3 text-fg-faint">Local time</span>
+            <LocalTime />
+          </p>
         </div>
 
         <div className="md:col-span-7">

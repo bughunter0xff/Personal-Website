@@ -184,7 +184,7 @@
 /* ── Backdrops: 1px grid + film grain ─────────────────────────────────────── */
 
 .bg-grid {
-  position: fixed;
+  position: absolute;
   inset: 0;
   z-index: -1;
   pointer-events: none;
@@ -193,11 +193,13 @@
     linear-gradient(to bottom, var(--line) 1px, transparent 1px);
   background-size: 96px 96px;
   background-position: center top;
-  mask-image: radial-gradient(
-    ellipse 80% 60% at 50% 0%,
-    rgba(0, 0, 0, 0.9),
-    rgba(0, 0, 0, 0.25) 60%,
-    transparent 100%
+  /* The hero draws its own interactive dot field; the line grid fades in below it. */
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent calc(100svh - 8rem),
+    rgba(0, 0, 0, 0.9) calc(100svh + 12rem),
+    rgba(0, 0, 0, 0.5) 100%
   );
 }
 
@@ -388,4 +390,158 @@
   height: 1px;
   background: var(--line);
   margin: 0.25rem 0;
+}
+
+/* ── Outlined display text ───────────────────────────────────────────────── */
+
+@utility text-outline {
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--fg);
+  paint-order: stroke fill;
+  transition: color 500ms var(--ease-out-expo), -webkit-text-stroke-color 500ms var(--ease-out-expo);
+  @media (width >= 64rem) {
+    -webkit-text-stroke-width: 2px;
+  }
+}
+
+/* ── Letter-roll hover (nav links) ───────────────────────────────────────── */
+
+.roll {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  line-height: 1.2;
+}
+.roll > span {
+  display: block;
+  transition: transform 500ms var(--ease-out-expo);
+}
+.roll > span:last-child {
+  position: absolute;
+  inset: 0;
+  transform: translateY(110%);
+  color: var(--accent);
+}
+.roll:hover > span:first-child,
+a:hover > .roll > span:first-child,
+a:focus-visible > .roll > span:first-child {
+  transform: translateY(-110%);
+}
+.roll:hover > span:last-child,
+a:hover > .roll > span:last-child,
+a:focus-visible > .roll > span:last-child {
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .roll > span {
+    transition: none;
+  }
+}
+
+/* ── Underline sweep ─────────────────────────────────────────────────────── */
+
+@utility sweep {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-repeat: no-repeat;
+  background-size: 0% 1px;
+  background-position: 0 100%;
+  transition: background-size 500ms var(--ease-out-expo);
+  &:hover,
+  &:focus-visible {
+    background-size: 100% 1px;
+  }
+}
+
+/* ── Theme switch: circular reveal via the View Transitions API ──────────── */
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(root) {
+  z-index: 1;
+}
+
+::view-transition-new(root) {
+  z-index: 2;
+  animation: theme-reveal 700ms var(--ease-in-out-quart);
+}
+
+@keyframes theme-reveal {
+  from {
+    clip-path: circle(0px at var(--vt-x, 50%) var(--vt-y, 50%));
+  }
+  to {
+    clip-path: circle(var(--vt-r, 150vmax) at var(--vt-x, 50%) var(--vt-y, 50%));
+  }
+}
+
+/* ── Custom cursor (fine pointers only) ──────────────────────────────────── */
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  html.has-cursor,
+  html.has-cursor a,
+  html.has-cursor button,
+  html.has-cursor [role="button"] {
+    cursor: none;
+  }
+  html.has-cursor input,
+  html.has-cursor textarea,
+  html.has-cursor [cmdk-root],
+  html.has-cursor [cmdk-root] * {
+    cursor: auto;
+  }
+}
+
+.cursor {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 90;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 12px;
+  height: 12px;
+  margin: -6px 0 0 -6px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--accent-fg);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition:
+    width 350ms var(--ease-out-expo),
+    height 350ms var(--ease-out-expo),
+    margin 350ms var(--ease-out-expo),
+    opacity 200ms ease,
+    background-color 300ms ease;
+}
+.cursor[data-state="hover"] {
+  width: 44px;
+  height: 44px;
+  margin: -22px 0 0 -22px;
+  background: var(--accent-soft);
+  outline: 1px solid var(--accent);
+}
+.cursor[data-state="label"] {
+  width: auto;
+  height: 28px;
+  margin: -14px 0 0 12px;
+  padding: 0 10px;
+  border-radius: 999px;
+}
+.cursor[data-state="down"] {
+  width: 8px;
+  height: 8px;
+  margin: -4px 0 0 -4px;
+}
+.cursor[data-hidden="true"] {
+  opacity: 0;
 }

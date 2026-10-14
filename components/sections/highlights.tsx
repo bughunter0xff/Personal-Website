@@ -5,6 +5,7 @@ import { highlights, sections, type Highlight } from "@/content";
 import { SpotlightCard } from "@/components/motion/spotlight-card";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { fadeUp, stagger } from "@/lib/motion";
+import { CountUp } from "@/components/ui/count-up";
 import { cn } from "@/lib/utils";
 
 const span: Record<Highlight["size"], string> = {
@@ -56,7 +57,7 @@ function HighlightBody({ h }: { h: Highlight }) {
               h.size === "lg" ? "text-[clamp(5rem,14vw,10rem)]" : "text-6xl md:text-7xl",
             )}
           >
-            {h.value}
+            <CountUp value={h.value ?? ""} />
           </p>
         </div>
       ) : null}

@@ -74,11 +74,28 @@ the first viewport, and a static-feeling film grain (an SVG `feTurbulence` tile 
 `overlay` blend). Dark is the default; the toggle in the nav and in the palette switches to light,
 persisted by `next-themes`.
 
+**Hero.** The surname is drawn as an outline that fills on hover, and the whole hero sits on an
+interactive dot field (`components/hero-field.tsx`): a 2D-canvas grid of fine dots that are pushed
+aside and tinted by the pointer, with a slow ripple while idle. It draws once and stays static on
+touch devices and for reduced-motion users, starts only when the browser is idle, and pauses when
+off-screen. Under the headline a status strip shows location, a live local-time clock
+(`site.timeZone` in `content.ts`), availability and the latest advisory.
+
 **Motion.** Hero text splits into characters and rises in on load; sections reveal on scroll; the
 primary buttons are magnetic; cards carry a pointer-following spotlight; the hero has a light scroll
-parallax. All of it respects `prefers-reduced-motion`: Framer Motion runs under
+parallax; the bento stats count up; the background timeline draws itself as you scroll; nav links
+roll on hover. All of it respects `prefers-reduced-motion`: Framer Motion runs under
 `<MotionConfig reducedMotion="user">`, the CSS entrance animations are disabled by a media query, and
 the magnetic/spotlight effects ignore touch pointers.
+
+**Cursor and rail.** On fine-pointer devices a small accent dot replaces the native cursor, grows
+into a ring over interactive elements and shows a short label (`data-cursor="Read"`) on key links.
+It is never enabled on touch devices or for reduced-motion users. Wide screens also get a fixed
+left rail with section numbers, the active section and a scroll-progress line.
+
+**Theme switch.** A segmented sun/moon control (the active mode is always highlighted, so the state
+is never ambiguous). Switching uses the View Transitions API to reveal the new theme in a circle
+growing out of the control; browsers without it, and reduced-motion users, get an instant switch.
 
 **Command palette.** `⌘K` / `Ctrl+K` (or the button in the nav, which doubles as the mobile menu)
 opens a palette with sections, writeups, contact links and the theme toggle. It is built on `cmdk` and
@@ -92,7 +109,7 @@ HTTP/2 generally scores slightly higher):
 | Preset  | Performance | Accessibility | Best practices | SEO |
 | ------- | ----------- | ------------- | -------------- | --- |
 | Desktop | 100         | 100           | 100            | 100 |
-| Mobile  | 94–95       | 100           | 100            | 100 |
+| Mobile  | 95          | 100           | 100            | 100 |
 
 Notes on how the scores were reached, in case you change things:
 
@@ -100,6 +117,8 @@ Notes on how the scores were reached, in case you change things:
   registered as a Largest Contentful Paint candidate by Chrome, which quietly ruins the LCP metric.
 - Framer Motion is loaded through `LazyMotion` with the `m` component and a lazily imported feature
   bundle; the command palette (cmdk + Radix Dialog) is a separate chunk loaded on idle.
+- The hero canvas is static on touch devices and starts after `requestIdleCallback`, so it never
+  adds to Total Blocking Time on phones.
 - Severity and status are always communicated by text; colour is a secondary cue.
 
 Security headers are set in `next.config.ts`: a Content Security Policy, HSTS with preload,
@@ -127,9 +146,11 @@ app/
 components/
   sections/                ← hero, highlights, cves, writeups, focus, background, contact
   motion/                  ← reveal, split-text, magnetic, spotlight-card
-  ui/                      ← button, section-heading, severity-badge, copy-button, theme-toggle
+  ui/                      ← button, section-heading, severity-badge, copy-button, theme-toggle,
+                             count-up, local-time, glyphs
   command-palette.tsx      ← provider + ⌘K shortcut (lazy-loads command-palette-dialog.tsx)
-  nav.tsx · footer.tsx · providers.tsx
+  hero-field.tsx           ← interactive canvas dot field
+  cursor.tsx · section-rail.tsx · nav.tsx · footer.tsx · providers.tsx
 lib/                       ← fonts, motion variants, site URL, utils
 public/                    ← .well-known/security.txt, pgp.asc
 scripts/subset-fonts.sh    ← regenerate app/fonts after upgrading `geist`
